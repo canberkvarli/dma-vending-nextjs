@@ -230,9 +230,9 @@ export default function Hero() {
             <motion.div
               animate={{
                 boxShadow: [
-                  "0 20px 60px rgba(16, 185, 129, 0.1)",
-                  "0 20px 60px rgba(16, 185, 129, 0.2)",
-                  "0 20px 60px rgba(16, 185, 129, 0.1)",
+                  "0 20px 60px rgba(169, 206, 55, 0.1)",
+                  "0 20px 60px rgba(169, 206, 55, 0.2)",
+                  "0 20px 60px rgba(169, 206, 55, 0.1)",
                 ],
               }}
               transition={{

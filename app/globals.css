@@ -5,13 +5,13 @@
   --font-family-heading: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Light Theme (Default) - Minimal Green */
+/* Light Theme (Default) - Logo Colors */
 :root[data-theme="light"] {
-  --color-primary: #10b981;
-  --color-primary-dark: #059669;
-  --color-primary-light: #34d399;
-  --color-secondary: #6b7280;
-  --color-accent: #10b981;
+  --color-primary: #A9CE37;
+  --color-primary-dark: #8FB02A;
+  --color-primary-light: #C4E05A;
+  --color-secondary: #408C99;
+  --color-accent: #A9CE37;
   --color-dark: #0f172a;
   --color-bg: #ffffff;
   --color-bg-secondary: #f8fafc;
@@ -23,13 +23,13 @@
   --color-border: #e2e8f0;
 }
 
-/* Dark Theme - Minimal Green */
+/* Dark Theme - Logo Colors */
 :root[data-theme="dark"] {
-  --color-primary: #10b981;
-  --color-primary-dark: #059669;
-  --color-primary-light: #34d399;
-  --color-secondary: #94a3b8;
-  --color-accent: #10b981;
+  --color-primary: #A9CE37;
+  --color-primary-dark: #8FB02A;
+  --color-primary-light: #C4E05A;
+  --color-secondary: #408C99;
+  --color-accent: #A9CE37;
   --color-dark: #0f172a;
   --color-bg: #0f172a;
   --color-bg-secondary: #1e293b;

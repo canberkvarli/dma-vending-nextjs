@@ -23,7 +23,7 @@ export default function About() {
             className="relative rounded-3xl bg-white text-emerald-950 shadow-xl border border-emerald-900/10 overflow-hidden dark:bg-emerald-900/90 dark:text-white dark:border-white/10"
           >
             {/* subtle ruled-paper pattern */}
-            <div className="absolute inset-0 opacity-[0.35] pointer-events-none bg-[linear-gradient(180deg,rgba(16,185,129,0.08)_1px,transparent_1px)] bg-[length:100%_36px] dark:opacity-0" />
+            <div className="absolute inset-0 opacity-[0.35] pointer-events-none bg-[linear-gradient(180deg,rgba(169,206,55,0.08)_1px,transparent_1px)] bg-[length:100%_36px] dark:opacity-0" />
 
             <div className="relative p-8 md:p-12">
               <div className="max-w-none text-emerald-950 dark:text-white" style={{ fontFamily: 'var(--font-hand)' }}>
