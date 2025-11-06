@@ -1,7 +1,4 @@
 import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
@@ -28,21 +25,52 @@ export async function POST(request: Request) {
       message || '(no message)'
     ].filter(Boolean).join('\n');
 
-    const fromAddress = process.env.CONTACT_FROM_EMAIL || 'DMA Healthy Vending <onboarding@resend.dev>';
+    const fromAddress = process.env.CONTACT_FROM_EMAIL || 'DMA Healthy Vending <no-reply@web3forms.com>';
 
-    const { data, error } = await resend.emails.send({
-      from: fromAddress,
-      to: toEmail,
-      replyTo: email,
-      subject,
-      text,
-    });
-
-    if (error) {
-      return NextResponse.json({ error: error.message || 'Failed to send email.' }, { status: 502 });
+    // Only Web3Forms
+    const web3formsKey = process.env.WEB3FORMS_ACCESS_KEY;
+    if (!web3formsKey) {
+      return NextResponse.json({ error: 'Server not configured: WEB3FORMS_ACCESS_KEY missing.' }, { status: 500 });
     }
 
-    return NextResponse.json({ ok: true, id: data?.id });
+    try {
+      const params = new URLSearchParams();
+      params.set('access_key', web3formsKey);
+      // Basic metadata
+      params.set('from_name', 'Website Contact Form');
+      params.set('from_email', 'no-reply@web3forms.com');
+      // Primary fields
+      params.set('name', name);
+      params.set('email', email);
+      if (phone) params.set('phone', String(phone));
+      if (company) params.set('company', String(company));
+      params.set('subject', subject);
+      params.set('message', text);
+      // Let Web3Forms send to target recipient via templates/routing if configured,
+      // or include recipient for dashboard routing if needed
+      if (toEmail) params.set('recipients', toEmail);
+
+      const endpoint = process.env.WEB3FORMS_ENDPOINT || 'https://api.web3forms.com/submit';
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json',
+        },
+        body: params.toString(),
+      });
+
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || (data && data.success === false)) {
+        const errorMessage = (data && (data.message || data.error)) || `Web3Forms error: ${response.status}`;
+        return NextResponse.json({ error: errorMessage }, { status: 502 });
+      }
+
+      return NextResponse.json({ ok: true, provider: 'web3forms', id: data?.id || data?.data?.id });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to submit to Web3Forms.';
+      return NextResponse.json({ error: message }, { status: 502 });
+    }
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Invalid request.';
     return NextResponse.json({ error: message }, { status: 400 });
