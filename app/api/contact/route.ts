@@ -14,14 +14,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Server not configured: CONTACT_TO_EMAIL missing.' }, { status: 500 });
     }
 
-    const subject = `New contact form submission from ${name}`;
+    const subject = `New inquiry from ${name} · DMA Healthy Vending`;
     const text = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      phone ? `Phone: ${phone}` : undefined,
-      company ? `Company: ${company}` : undefined,
-      '',
-      'Message:',
       message || '(no message)'
     ].filter(Boolean).join('\n');
 
@@ -36,16 +30,18 @@ export async function POST(request: Request) {
     try {
       const params = new URLSearchParams();
       params.set('access_key', web3formsKey);
-      // Basic metadata
-      params.set('from_name', 'Website Contact Form');
+      // Email envelope & reply handling
+      params.set('from_name', 'DMA Healthy Vending');
       params.set('from_email', 'no-reply@web3forms.com');
-      // Primary fields
+      params.set('replyto', email);
+      // Primary fields shown in the email
+      params.set('subject', subject);
       params.set('name', name);
       params.set('email', email);
       if (phone) params.set('phone', String(phone));
       if (company) params.set('company', String(company));
-      params.set('subject', subject);
-      params.set('message', text);
+      // Keep message clean (no duplicated fields)
+      params.set('message', message || '');
       // Let Web3Forms send to target recipient via templates/routing if configured,
       // or include recipient for dashboard routing if needed
       if (toEmail) params.set('recipients', toEmail);
