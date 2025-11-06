@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -41,11 +41,7 @@ const textVariants = {
 };
 
 export default function Hero() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const [mounted] = useState(() => typeof window !== 'undefined');
 
   return (
     <section id="home" className="relative min-h-screen bg-dark flex items-center pt-20 overflow-hidden">
@@ -125,9 +121,9 @@ export default function Hero() {
               animate={mounted ? "visible" : "hidden"}
               className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed"
             >
-              Are your employees tired of junk food-only vending machines at work? 
-              Do you want to offer them healthy, natural or low-calorie food and beverage options? 
-              HealthyChoice helps you provide the healthy options your employees want while 
+              Are you tired of junk food-only vending machines? 
+              Do you want to offer healthy, natural or low-calorie food and beverage options? 
+              HealthyChoice helps you provide the healthy options you want while 
               helping your company promote a healthy lifestyle. <strong>All without any cost or long-term 
               commitment to your company.</strong>
             </motion.p>

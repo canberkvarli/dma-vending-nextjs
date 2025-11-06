@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
 import { HiSun, HiMoon } from 'react-icons/hi';
@@ -40,15 +41,23 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-28 sm:h-32">
           {/* Logo */}
-          <Link href="#home" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-sm transition-transform group-hover:scale-110">
-              DMA
-            </div>
-            <span className="text-xl font-bold text-text">
-              DMA Healthy Vending
-            </span>
+          <Link href="#home" className="flex items-center group">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              className="relative h-24 w-auto sm:h-28 md:h-32"
+            >
+              <Image
+                src="/logo-large.png"
+                alt="DMA Healthy Vending Logo"
+                width={400}
+                height={128}
+                className="h-full w-auto object-contain"
+                priority
+              />
+            </motion.div>
           </Link>
 
           {/* Desktop Navigation */}

@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     question: 'What types of products are available?',
-    answer: 'We offer healthy, natural, and low-calorie food and beverage options that your employees want.',
+    answer: 'We offer healthy, natural, and low-calorie food and beverage options that you want.',
   },
   {
     question: 'How does the service work?',

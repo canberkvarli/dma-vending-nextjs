@@ -13,18 +13,18 @@ import {
 const benefits = [
   {
     icon: HiHeart,
-    title: 'Employee Wellness',
-    description: 'Support your team\'s health and wellbeing',
+    title: 'Health & Wellness',
+    description: 'Support health and wellbeing',
   },
   {
     icon: HiTrendingUp,
-    title: 'Workplace Culture',
+    title: 'Wellness Culture',
     description: 'Foster a culture of health and wellness',
   },
   {
     icon: HiLightningBolt,
     title: 'Convenience',
-    description: 'Easy access to healthy options at work',
+    description: 'Easy access to healthy options',
   },
   {
     icon: HiHand,
@@ -103,7 +103,7 @@ export default function Benefits() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-text-secondary max-w-2xl mx-auto"
           >
-            Help your company promote a healthy lifestyle with convenient, nutritious vending options.
+            Promote a healthy lifestyle with convenient, nutritious vending options.
           </motion.p>
         </motion.div>
 

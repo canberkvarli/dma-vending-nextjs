@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   const footerLinks = {
@@ -24,13 +25,18 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
           {/* About */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-sm">
-                DMA
-              </div>
-              <h3 className="text-xl font-bold text-white">
-                DMA Healthy Vending
-              </h3>
+            <div className="mb-4">
+              <Link href="#home" className="inline-block">
+                <div className="relative h-24 w-auto sm:h-28 md:h-32">
+                  <Image
+                    src="/logo-large.png"
+                    alt="DMA Healthy Vending Logo"
+                    width={400}
+                    height={128}
+                    className="h-full w-auto object-contain"
+                  />
+                </div>
+              </Link>
             </div>
             <p className="leading-relaxed">
               Providing healthy vending solutions for workplaces throughout California. 

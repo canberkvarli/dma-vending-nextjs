@@ -18,7 +18,7 @@ const hand = Caveat({
 
 export const metadata: Metadata = {
   title: "DMA Healthy Vending | Workplace Wellness Solutions",
-  description: "Are your employees tired of junk food-only vending machines at work? DMA Healthy Vending provides healthy, natural or low-calorie food and beverage options. All without any cost or long-term commitment to your company.",
+  description: "Are you tired of junk food-only vending machines? DMA Healthy Vending provides healthy, natural or low-calorie food and beverage options. All without any cost or long-term commitment to your company.",
   keywords: ["healthy vending", "workplace wellness", "healthy snacks", "vending machines", "California", "Danville"],
   authors: [{ name: "DMA Healthy Vending" }],
   openGraph: {

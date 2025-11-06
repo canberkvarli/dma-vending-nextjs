@@ -109,7 +109,7 @@ export default function Features() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-5xl font-bold text-text mb-4"
           >
-            Healthy Options Your Employees Want
+            Healthy Options You Want
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
