@@ -28,9 +28,9 @@ export async function POST(request: Request) {
       message || '(no message)'
     ].filter(Boolean).join('\n');
 
-    const fromAddress = process.env.CONTACT_FROM_EMAIL || 'website@onresend.com';
+    const fromAddress = process.env.CONTACT_FROM_EMAIL || 'DMA Healthy Vending <onboarding@resend.dev>';
 
-    const sendResult = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: fromAddress,
       to: toEmail,
       replyTo: email,
@@ -38,13 +38,14 @@ export async function POST(request: Request) {
       text,
     });
 
-    if ((sendResult as any)?.error) {
-      return NextResponse.json({ error: 'Failed to send email.' }, { status: 502 });
+    if (error) {
+      return NextResponse.json({ error: error.message || 'Failed to send email.' }, { status: 502 });
     }
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, id: data?.id });
   } catch (error) {
-    return NextResponse.json({ error: 'Invalid request.' }, { status: 400 });
+    const message = error instanceof Error ? error.message : 'Invalid request.';
+    return NextResponse.json({ error: message }, { status: 400 });
   }
 }
 
