@@ -16,6 +16,12 @@ export async function POST(request: Request) {
 
     const subject = `New inquiry from ${name} · DMA Healthy Vending`;
     const text = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      phone ? `Phone: ${phone}` : undefined,
+      company ? `Company: ${company}` : undefined,
+      '',
+      'Message:',
       message || '(no message)'
     ].filter(Boolean).join('\n');
 
@@ -34,14 +40,9 @@ export async function POST(request: Request) {
       params.set('from_name', 'DMA Healthy Vending');
       params.set('from_email', 'no-reply@web3forms.com');
       params.set('replyto', email);
-      // Primary fields shown in the email
+      // Subject + single consolidated message to avoid duplicated field sections
       params.set('subject', subject);
-      params.set('name', name);
-      params.set('email', email);
-      if (phone) params.set('phone', String(phone));
-      if (company) params.set('company', String(company));
-      // Keep message clean (no duplicated fields)
-      params.set('message', message || '');
+      params.set('message', text);
       // Let Web3Forms send to target recipient via templates/routing if configured,
       // or include recipient for dashboard routing if needed
       if (toEmail) params.set('recipients', toEmail);
