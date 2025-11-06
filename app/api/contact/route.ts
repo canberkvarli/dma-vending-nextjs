@@ -33,7 +33,7 @@ export async function POST(request: Request) {
     const sendResult = await resend.emails.send({
       from: fromAddress,
       to: toEmail,
-      reply_to: email,
+      replyTo: email,
       subject,
       text,
     });
