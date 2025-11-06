@@ -34,7 +34,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-20 bg-white">
+    <section id="faq" className="py-20 bg-surface">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -45,29 +45,44 @@ export default function FAQ() {
           <div className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold mb-4">
             FAQs
           </div>
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-dark mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-text mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-text-secondary">
             Learn more about our healthy vending services.
           </p>
         </motion.div>
 
-        <div className="space-y-4">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1,
+              },
+            },
+          }}
+          className="space-y-4"
+        >
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-cream rounded-xl overflow-hidden hover:shadow-lg transition-shadow"
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              whileHover={{ scale: 1.02, y: -2 }}
+              className="bg-surface-secondary rounded-xl overflow-hidden hover:shadow-lg transition-shadow"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full px-8 py-6 flex items-center justify-between text-left"
               >
-                <h3 className="text-lg font-bold text-dark pr-8">
+                <h3 className="text-lg font-bold text-text pr-8">
                   {faq.question}
                 </h3>
                 <motion.svg
@@ -95,7 +110,7 @@ export default function FAQ() {
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
                   >
-                    <div className="px-8 pb-6 text-gray-600 leading-relaxed">
+                    <div className="px-8 pb-6 text-text-secondary leading-relaxed">
                       {faq.answer}
                     </div>
                   </motion.div>
@@ -103,7 +118,7 @@ export default function FAQ() {
               </AnimatePresence>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

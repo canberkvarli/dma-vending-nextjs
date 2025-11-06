@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
-import { DM_Sans, Space_Grotesk } from "next/font/google";
+import { Inter, Caveat } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-inter",
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const hand = Caveat({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  weight: ["400", "700"],
+  variable: "--font-hand",
   display: "swap",
 });
 
@@ -34,9 +36,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${dmSans.variable} ${spaceGrotesk.variable} font-sans antialiased bg-cream`}>
-        {children}
+    <html lang="en" className="scroll-smooth" data-theme="light">
+      <body className={`${inter.variable} ${hand.variable} font-sans antialiased`}>
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

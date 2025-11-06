@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function VendingShowcase() {
   const features = [
@@ -45,75 +46,70 @@ export default function VendingShowcase() {
   ];
 
   return (
-    <section id="machine" className="py-20 bg-white">
+    <section id="machine" className="py-20 bg-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Vending Machine Photo Placeholder */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="relative aspect-[3/4] bg-beige border-4 border-dashed border-primary rounded-3xl flex flex-col items-center justify-center p-8 text-center">
-              <svg
-                className="w-24 h-24 text-primary mb-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-              <p className="text-xl font-heading font-bold text-dark mb-2">
-                Vending Machine Photo Placeholder
-              </p>
-              <p className="text-gray-600 max-w-xs">
-                Replace with actual photo from dmahealthyvending.com main website
-              </p>
-            </div>
-          </motion.div>
+        <div className="grid grid-cols-1 gap-12 items-start">
+          {/* Image temporarily removed. Add a new photo here when ready. */}
+          {/* Tip: Reinsert a left column with <Image /> once you pick a new asset. */}
 
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold mb-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold mb-4"
+            >
               Our Technology
-            </div>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-dark mb-6">
-              State-of-the-Art Vending Solutions
-            </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Our modern vending machines are designed to provide convenience, reliability, 
+            </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-4xl md:text-5xl font-bold text-text mb-6"
+            >
+              State-of-the-Art Vending Solution
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-lg text-text-secondary mb-8 max-w-2xl"
+            >
+              Our modern vending machine is designed to provide convenience, reliability, 
               and healthy options for your workplace.
-            </p>
+            </motion.p>
 
             <div className="space-y-6 mb-8">
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex gap-4"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  className="flex gap-4 group cursor-default rounded-xl p-3"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white">
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 220 }}
+                    className="flex-shrink-0 w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white"
+                  >
                     {feature.icon}
-                  </div>
+                  </motion.div>
                   <div>
-                    <h3 className="text-lg font-bold text-dark mb-1">
+                    <h3 className="text-lg font-bold text-text mb-1">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                    <p className="text-text-secondary">{feature.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -146,3 +142,4 @@ export default function VendingShowcase() {
     </section>
   );
 }
+ 

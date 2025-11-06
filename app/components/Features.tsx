@@ -59,49 +59,98 @@ const features = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 12, scale: 0.98 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut" as const,
+    },
+  },
+};
+
 export default function Features() {
   return (
-    <section id="about" className="py-20 bg-white">
+    <section id="about" className="py-20 bg-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <div className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold mb-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold mb-4"
+          >
             Why Healthy Vending
-          </div>
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-dark mb-4">
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl md:text-5xl font-bold text-text mb-4"
+          >
             Healthy Options Your Employees Want
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg text-text-secondary max-w-3xl mx-auto"
+          >
             We provide healthy, natural, and low-calorie food and beverage options without any cost 
             or long-term commitment to your company.
-          </p>
+          </motion.p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="bg-cream p-8 rounded-2xl hover:shadow-xl transition-all"
+              variants={itemVariants}
+              whileHover={{ y: -2 }}
+              className="bg-surface-secondary p-8 rounded-2xl transition-all group cursor-default hover:bg-surface-secondary/80"
             >
-              <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-white mb-6">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 200 }}
+                className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-white mb-6"
+              >
                 {feature.icon}
-              </div>
-              <h3 className="text-2xl font-heading font-bold text-dark mb-4">
+              </motion.div>
+              <h3 className="text-2xl font-bold text-text mb-4">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              <p className="text-text-secondary leading-relaxed">{feature.description}</p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

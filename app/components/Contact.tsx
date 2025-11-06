@@ -13,20 +13,34 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', phone: '', company: '', message: '' });
-    setIsSubmitting(false);
-    
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data?.error || 'Failed to send message');
+      }
+
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+      // Reset success message after 5 seconds
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (err: any) {
+      setError(err?.message || 'Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -74,23 +88,42 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-cream">
+    <section id="contact" className="py-20 bg-surface-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <div className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold mb-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold mb-4"
+          >
             Contact Us
-          </div>
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-dark mb-4">
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl md:text-5xl font-bold text-text mb-4"
+          >
             Get Started Today
-          </h2>
-          <p className="text-lg text-gray-600">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg text-text-secondary"
+          >
             Contact DMA Healthy Vending to bring healthy options to your workplace.
-          </p>
+          </motion.p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
@@ -98,26 +131,38 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8 }}
           >
-            <h3 className="text-3xl font-heading font-bold text-dark mb-8">
+            <motion.h3
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl font-bold text-text mb-8"
+            >
               DMA Healthy Vending
-            </h3>
+            </motion.h3>
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex gap-4"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  whileHover={{ x: 10 }}
+                  className="flex gap-4 group"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white">
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="flex-shrink-0 w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white"
+                  >
                     {info.icon}
-                  </div>
+                  </motion.div>
                   <div>
-                    <h4 className="font-bold text-dark mb-1">{info.title}</h4>
+                    <h4 className="font-bold text-text mb-1">{info.title}</h4>
                     {info.link ? (
                       <a
                         href={info.link}
@@ -128,7 +173,7 @@ export default function Contact() {
                         {info.value}
                       </a>
                     ) : (
-                      <p className="text-gray-600">{info.value}</p>
+                      <p className="text-text-secondary">{info.value}</p>
                     )}
                   </div>
                 </motion.div>
@@ -140,9 +185,17 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8 }}
           >
-            <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 shadow-lg">
+            <motion.form
+              onSubmit={handleSubmit}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-surface rounded-2xl p-8 shadow-lg"
+            >
               {isSubmitted && (
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
@@ -157,9 +210,23 @@ export default function Contact() {
                   </p>
                 </motion.div>
               )}
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-6 p-4 bg-red-100 border-2 border-red-400 rounded-lg"
+                >
+                  <p className="text-red-600 font-semibold flex items-center gap-2">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {error}
+                  </p>
+                </motion.div>
+              )}
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-bold text-dark mb-2">
+                  <label className="block text-sm font-bold text-text mb-2">
                     Name *
                   </label>
                   <input
@@ -167,12 +234,12 @@ export default function Contact() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-beige rounded-lg focus:border-primary focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border-2 border-muted rounded-lg focus:border-primary focus:outline-none transition-colors bg-surface"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-dark mb-2">
+                  <label className="block text-sm font-bold text-text mb-2">
                     Email *
                   </label>
                   <input
@@ -180,36 +247,36 @@ export default function Contact() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-beige rounded-lg focus:border-primary focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border-2 border-muted rounded-lg focus:border-primary focus:outline-none transition-colors bg-surface"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-dark mb-2">
+                  <label className="block text-sm font-bold text-text mb-2">
                     Phone
                   </label>
                   <input
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-beige rounded-lg focus:border-primary focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border-2 border-muted rounded-lg focus:border-primary focus:outline-none transition-colors bg-surface"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-dark mb-2">
+                  <label className="block text-sm font-bold text-text mb-2">
                     Company
                   </label>
                   <input
                     type="text"
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-beige rounded-lg focus:border-primary focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border-2 border-muted rounded-lg focus:border-primary focus:outline-none transition-colors bg-surface"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-dark mb-2">
+                  <label className="block text-sm font-bold text-text mb-2">
                     Message
                   </label>
                   <textarea
@@ -245,7 +312,7 @@ export default function Contact() {
                   )}
                 </motion.button>
               </div>
-            </form>
+            </motion.form>
           </motion.div>
         </div>
       </div>

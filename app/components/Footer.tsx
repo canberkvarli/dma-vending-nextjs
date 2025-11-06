@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { FaLeaf } from 'react-icons/fa';
 
 export default function Footer() {
   const footerLinks = {
@@ -20,14 +19,16 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-dark text-beige">
+    <footer className="bg-dark text-text-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
           {/* About */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <FaLeaf className="w-8 h-8 text-secondary" />
-              <h3 className="text-xl font-heading font-bold text-white">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                DMA
+              </div>
+              <h3 className="text-xl font-bold text-white">
                 DMA Healthy Vending
               </h3>
             </div>
@@ -39,7 +40,7 @@ export default function Footer() {
 
           {/* Navigation Links */}
           <div>
-            <h4 className="text-lg font-heading font-bold text-secondary mb-4">
+            <h4 className="text-lg font-bold text-primary mb-4">
               Navigation
             </h4>
             <ul className="space-y-3">
@@ -58,7 +59,7 @@ export default function Footer() {
 
           {/* Contact Links */}
           <div>
-            <h4 className="text-lg font-heading font-bold text-secondary mb-4">
+            <h4 className="text-lg font-bold text-primary mb-4">
               Contact
             </h4>
             <ul className="space-y-3">
@@ -77,9 +78,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 text-center">
+        <div className="pt-8 border-t border-primary/30 text-center">
           <p className="text-sm">
-            © 2025 DMA Healthy Vending, All rights reserved.
+            © Copyright 2025 DMA Healthy Vending, All rights reserved.
           </p>
         </div>
       </div>

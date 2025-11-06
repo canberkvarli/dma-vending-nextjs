@@ -3,11 +3,13 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FaLeaf } from 'react-icons/fa';
+import { useTheme } from '../contexts/ThemeContext';
+import { HiSun, HiMoon } from 'react-icons/hi';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,16 +35,18 @@ export default function Navbar() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/95 backdrop-blur-lg shadow-lg'
-          : 'bg-white/90 backdrop-blur-md shadow-md'
+          ? 'bg-surface backdrop-blur-lg shadow-lg border-b border-muted'
+          : 'bg-surface backdrop-blur-md shadow-md border-b border-muted/50'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="#home" className="flex items-center gap-2 group">
-            <FaLeaf className="w-8 h-8 text-primary transition-transform group-hover:scale-110" />
-            <span className="text-xl font-heading font-bold text-primary">
+            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-sm transition-transform group-hover:scale-110">
+              DMA
+            </div>
+            <span className="text-xl font-bold text-text">
               DMA Healthy Vending
             </span>
           </Link>
@@ -53,12 +57,23 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-700 hover:text-primary font-medium transition-colors relative group"
+                className="text-text-secondary hover:text-primary font-medium transition-colors relative group"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
               </Link>
             ))}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg hover:bg-surface-secondary transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === 'light' ? (
+                <HiMoon className="w-5 h-5 text-text" />
+              ) : (
+                <HiSun className="w-5 h-5 text-text" />
+              )}
+            </button>
             <Link
               href="#contact"
               className="px-6 py-2.5 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all hover:scale-105 shadow-md"
@@ -68,33 +83,46 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden text-dark p-2"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          <div className="lg:hidden flex items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg hover:bg-surface-secondary transition-colors"
+              aria-label="Toggle theme"
             >
-              {mobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+              {theme === 'light' ? (
+                <HiMoon className="w-5 h-5 text-text" />
               ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <HiSun className="w-5 h-5 text-text" />
               )}
-            </svg>
-          </button>
+            </button>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="text-text p-2"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {mobileMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -103,7 +131,7 @@ export default function Navbar() {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="lg:hidden bg-white border-t border-gray-200"
+          className="lg:hidden bg-surface border-t border-muted"
         >
           <div className="px-4 py-6 space-y-4">
             {navLinks.map((link) => (
@@ -111,7 +139,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block text-gray-700 hover:text-primary font-medium py-2"
+                className="block text-text-secondary hover:text-primary font-medium py-2"
               >
                 {link.label}
               </Link>

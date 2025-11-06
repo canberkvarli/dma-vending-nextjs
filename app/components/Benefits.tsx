@@ -1,82 +1,157 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { 
+  HiHeart, 
+  HiTrendingUp, 
+  HiLightningBolt, 
+  HiHand, 
+  HiSupport, 
+  HiCheckCircle 
+} from 'react-icons/hi';
 
 const benefits = [
   {
-    icon: '❤️',
+    icon: HiHeart,
     title: 'Employee Wellness',
     description: 'Support your team\'s health and wellbeing',
   },
   {
-    icon: '📈',
+    icon: HiTrendingUp,
     title: 'Workplace Culture',
     description: 'Foster a culture of health and wellness',
   },
   {
-    icon: '⚡',
+    icon: HiLightningBolt,
     title: 'Convenience',
     description: 'Easy access to healthy options at work',
   },
   {
-    icon: '🤝',
+    icon: HiHand,
     title: 'No Commitment',
     description: 'Flexible terms with no contracts',
   },
   {
-    icon: '🎧',
+    icon: HiSupport,
     title: 'Full Support',
     description: 'Complete service and maintenance',
   },
   {
-    icon: '✅',
+    icon: HiCheckCircle,
     title: 'Quality Products',
     description: 'Fresh, natural, healthy selections',
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, scale: 0.8, y: 30 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      type: "spring" as const,
+      stiffness: 100,
+    },
+  },
+};
+
 export default function Benefits() {
   return (
-    <section className="py-20 bg-cream">
+    <section className="py-20 bg-surface-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <div className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold mb-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold mb-4"
+          >
             About Us
-          </div>
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-dark mb-4">
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl md:text-5xl font-bold text-text mb-4"
+          >
             Promote a Healthy Lifestyle
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg text-text-secondary max-w-2xl mx-auto"
+          >
             Help your company promote a healthy lifestyle with convenient, nutritious vending options.
-          </p>
+          </motion.p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {benefits.map((benefit, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-              className="text-center p-8"
-            >
-              <div className="w-20 h-20 bg-white border-4 border-primary rounded-full flex items-center justify-center text-4xl mx-auto mb-6 hover:bg-primary hover:scale-110 transition-all">
-                {benefit.icon}
-              </div>
-              <h3 className="text-xl font-heading font-bold text-dark mb-3">
-                {benefit.title}
-              </h3>
-              <p className="text-gray-600">{benefit.description}</p>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {benefits.map((benefit, index) => {
+            const IconComponent = benefit.icon;
+            return (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ y: -4, scale: 1.01 }}
+                className="text-center p-6"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.06 }}
+                  transition={{ duration: 0.3, type: "spring", stiffness: 250 }}
+                  className="w-16 h-16 bg-surface border-2 border-muted rounded-full flex items-center justify-center mx-auto mb-4 transition-all group cursor-pointer shadow-sm hover:shadow-md ring-0 outline-none focus-visible:outline-none"
+                >
+                  <IconComponent className="w-8 h-8 text-primary transition-colors group-hover:text-text" />
+                </motion.div>
+                <motion.h3
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 + 0.3 }}
+                  className="text-xl font-bold text-text mb-3"
+                >
+                  {benefit.title}
+                </motion.h3>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 + 0.4 }}
+                  className="text-text-secondary"
+                >
+                  {benefit.description}
+                </motion.p>
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );

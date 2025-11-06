@@ -1,31 +1,133 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #5B7553;
-  --color-primary-dark: #4A5F43;
-  --color-secondary: #8B9475;
-  --color-accent: #A67B5B;
-  --color-dark: #2C3E2C;
-  --color-cream: #F9F7F4;
-  --color-beige: #E8E3DA;
-  
-  --font-family-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-family-heading: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-family-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-family-heading: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Light Theme (Default) - Minimal Green */
+:root[data-theme="light"] {
+  --color-primary: #10b981;
+  --color-primary-dark: #059669;
+  --color-primary-light: #34d399;
+  --color-secondary: #6b7280;
+  --color-accent: #10b981;
+  --color-dark: #0f172a;
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-secondary: #f1f5f9;
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+}
+
+/* Dark Theme - Minimal Green */
+:root[data-theme="dark"] {
+  --color-primary: #10b981;
+  --color-primary-dark: #059669;
+  --color-primary-light: #34d399;
+  --color-secondary: #94a3b8;
+  --color-accent: #10b981;
+  --color-dark: #0f172a;
+  --color-bg: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-surface: #1e293b;
+  --color-surface-secondary: #334155;
+  --color-text: #ffffff;
+  --color-text-secondary: #f1f5f9;
+  --color-text-muted: #cbd5e1;
+  --color-border: #475569;
 }
 
 @layer base {
   html {
     scroll-padding-top: 5rem;
   }
+  
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
 }
 
 @layer utilities {
-  .bg-cream {
-    background-color: var(--color-cream);
+  .bg-primary {
+    background-color: var(--color-primary);
   }
   
-  .bg-beige {
-    background-color: var(--color-beige);
+  .bg-primary-dark {
+    background-color: var(--color-primary-dark);
+  }
+  
+  .bg-primary-light {
+    background-color: var(--color-primary-light);
+  }
+  
+  .bg-secondary {
+    background-color: var(--color-secondary);
+  }
+  
+  .bg-accent {
+    background-color: var(--color-accent);
+  }
+  
+  .bg-dark {
+    background-color: var(--color-dark);
+  }
+  
+  .bg-surface {
+    background-color: var(--color-surface);
+  }
+  
+  .bg-surface-secondary {
+    background-color: var(--color-surface-secondary);
+  }
+  
+  .text-primary {
+    color: var(--color-primary);
+  }
+  
+  .text-primary-dark {
+    color: var(--color-primary-dark);
+  }
+  
+  .text-secondary {
+    color: var(--color-secondary);
+  }
+  
+  .text-accent {
+    color: var(--color-accent);
+  }
+  
+  .text-dark {
+    color: var(--color-dark);
+  }
+  
+  .text-text {
+    color: var(--color-text);
+  }
+  
+  .text-text-secondary {
+    color: var(--color-text-secondary);
+  }
+  
+  .text-muted {
+    color: var(--color-text-muted);
+  }
+  
+  .border-primary {
+    border-color: var(--color-primary);
+  }
+  
+  .border-secondary {
+    border-color: var(--color-secondary);
+  }
+  
+  .border-muted {
+    border-color: var(--color-border);
   }
   
   .text-balance {
@@ -39,14 +141,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-beige);
+  background: var(--color-bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #5B7553;
+  background: var(--color-primary);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4A5F43;
+  background: var(--color-primary-dark);
 }

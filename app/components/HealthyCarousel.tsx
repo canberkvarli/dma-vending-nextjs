@@ -47,36 +47,65 @@ export default function HealthyCarousel() {
   };
 
   return (
-    <section id="products" className="py-20 bg-cream">
+    <section id="products" className="py-20 bg-surface-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <div className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold mb-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold mb-4"
+          >
             Our Products
-          </div>
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-dark mb-4">
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl md:text-5xl font-bold text-text mb-4"
+          >
             Fresh, Healthy, Delicious
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg text-text-secondary max-w-2xl mx-auto"
+          >
             Explore our wide selection of nutritious options that your employees will love.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Carousel */}
-        <div className="relative">
-          <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="relative"
+        >
+          <motion.div
+            whileHover={{ scale: 1.01 }}
+            transition={{ duration: 0.3 }}
+            className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl"
+          >
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.6, ease: [0.6, -0.05, 0.01, 0.99] as const }}
                 className="relative w-full h-full"
               >
                 <Image
@@ -107,12 +136,14 @@ export default function HealthyCarousel() {
                 </div>
               </motion.div>
             </AnimatePresence>
-          </div>
+          </motion.div>
 
           {/* Navigation Buttons */}
-          <button
+          <motion.button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-primary hover:text-white transition-all group"
+            whileHover={{ scale: 1.1, x: -5 }}
+            whileTap={{ scale: 0.9 }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-surface rounded-full flex items-center justify-center shadow-lg hover:bg-primary hover:text-white transition-all group z-10"
           >
             <svg
               className="w-6 h-6"
@@ -127,10 +158,12 @@ export default function HealthyCarousel() {
                 d="M15 19l-7-7 7-7"
               />
             </svg>
-          </button>
-          <button
+          </motion.button>
+          <motion.button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-primary hover:text-white transition-all group"
+            whileHover={{ scale: 1.1, x: 5 }}
+            whileTap={{ scale: 0.9 }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-surface rounded-full flex items-center justify-center shadow-lg hover:bg-primary hover:text-white transition-all group z-10"
           >
             <svg
               className="w-6 h-6"
@@ -145,23 +178,32 @@ export default function HealthyCarousel() {
                 d="M9 5l7 7-7 7"
               />
             </svg>
-          </button>
+          </motion.button>
 
           {/* Dots */}
-          <div className="flex justify-center gap-2 mt-6">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            className="flex justify-center gap-2 mt-6"
+          >
             {healthyImages.map((_, index) => (
-              <button
+              <motion.button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`h-2 rounded-full transition-all ${
-                  index === currentIndex
-                    ? 'w-8 bg-primary'
-                    : 'w-2 bg-gray-300 hover:bg-gray-400'
-                }`}
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                animate={{
+                  width: index === currentIndex ? 32 : 8,
+                  backgroundColor: index === currentIndex ? 'var(--color-primary)' : 'var(--color-border)',
+                }}
+                transition={{ duration: 0.3 }}
+                className="h-2 rounded-full"
               />
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
