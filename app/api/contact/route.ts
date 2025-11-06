@@ -25,7 +25,7 @@ export async function POST(request: Request) {
       message || '(no message)'
     ].filter(Boolean).join('\n');
 
-    const fromAddress = process.env.CONTACT_FROM_EMAIL || 'DMA Healthy Vending <no-reply@web3forms.com>';
+    // Web3Forms will handle the actual sender identity; we control Reply-To via 'replyto'.
 
     // Only Web3Forms
     const web3formsKey = process.env.WEB3FORMS_ACCESS_KEY;
@@ -36,9 +36,7 @@ export async function POST(request: Request) {
     try {
       const params = new URLSearchParams();
       params.set('access_key', web3formsKey);
-      // Email envelope & reply handling
-      params.set('from_name', 'DMA Healthy Vending');
-      params.set('from_email', 'no-reply@web3forms.com');
+      // Email envelope & reply handling (avoid adding extra From in email body)
       params.set('replyto', email);
       // Subject + single consolidated message to avoid duplicated field sections
       params.set('subject', subject);
