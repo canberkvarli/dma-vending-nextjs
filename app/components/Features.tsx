@@ -18,8 +18,8 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
-    title: 'No Cost to Company',
-    description: 'All without any cost or long-term commitment to your company. Free installation and service.',
+    title: 'No Cost to You',
+    description: 'All without any cost or long-term commitment to you. Free installation and service.',
   },
   {
     icon: (
@@ -28,7 +28,7 @@ const features = [
       </svg>
     ),
     title: 'Custom Solutions',
-    description: 'Tailored product selection based on your workplace needs and employee preferences.',
+    description: 'Tailored product selection based on your location needs and customer preferences.',
   },
   {
     icon: (
@@ -119,7 +119,7 @@ export default function Features() {
             className="text-lg text-text-secondary max-w-3xl mx-auto"
           >
             We provide healthy, natural, and low-calorie food and beverage options without any cost 
-            or long-term commitment to your company.
+            or long-term commitment to you.
           </motion.p>
         </motion.div>
 

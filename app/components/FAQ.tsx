@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const faqs = [
   {
-    question: 'What does it cost my company?',
-    answer: 'There is no cost to your company. We provide installation and service at no charge with no long-term commitment required.',
+    question: 'What does it cost?',
+    answer: 'There is no cost to you. We provide installation and service at no charge with no long-term commitment required.',
   },
   {
     question: 'What types of products are available?',
@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     question: 'How does the service work?',
-    answer: 'We install the machines at your location, stock them regularly, and handle all maintenance - all at no cost to your company.',
+    answer: 'We install the machines at your location, stock them regularly, and handle all maintenance - all at no cost to you.',
   },
   {
     question: 'Is there a long-term commitment?',

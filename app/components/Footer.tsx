@@ -27,20 +27,20 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="mb-4">
               <Link href="#home" className="inline-block">
-                <div className="relative h-24 w-auto sm:h-28 md:h-32">
+                <div className="relative h-16 w-auto sm:h-20 md:h-24">
                   <Image
-                    src="/logo-large.png"
+                    src="/logo-dma.png"
                     alt="DMA Healthy Vending Logo"
-                    width={400}
-                    height={128}
+                    width={269}
+                    height={99}
                     className="h-full w-auto object-contain"
                   />
                 </div>
               </Link>
             </div>
             <p className="leading-relaxed">
-              Providing healthy vending solutions for workplaces throughout California. 
-              Promoting wellness and nutrition without any cost to your company.
+              Providing healthy vending solutions for gyms, schools, and facilities throughout California. 
+              Promoting wellness and nutrition without any cost to you.
             </p>
           </div>
 

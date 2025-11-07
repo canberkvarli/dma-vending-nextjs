@@ -78,20 +78,11 @@ export default function Benefits() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold mb-4"
-          >
-            About Us
-          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.6 }}
             className="text-4xl md:text-5xl font-bold text-text mb-4"
           >
             Promote a Healthy Lifestyle
@@ -100,7 +91,7 @@ export default function Benefits() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             className="text-lg text-text-secondary max-w-2xl mx-auto"
           >
             Promote a healthy lifestyle with convenient, nutritious vending options.

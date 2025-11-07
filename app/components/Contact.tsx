@@ -122,7 +122,7 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-text-secondary"
           >
-            Contact DMA Healthy Vending to bring healthy options to your workplace.
+            Contact DMA Healthy Vending to bring healthy options to your gym, school, or facility.
           </motion.p>
         </motion.div>
 
@@ -265,12 +265,13 @@ export default function Contact() {
 
                 <div>
                   <label className="block text-sm font-bold text-text mb-2">
-                    Company
+                    Location / Organization
                   </label>
                   <input
                     type="text"
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                    placeholder="Gym, School, Facility, etc."
                     className="w-full px-4 py-3 border-2 border-muted rounded-lg focus:border-primary focus:outline-none transition-colors bg-surface"
                   />
                 </div>

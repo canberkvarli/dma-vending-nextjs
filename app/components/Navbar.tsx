@@ -24,8 +24,7 @@ export default function Navbar() {
   const navLinks = [
     { href: '#home', label: 'Home' },
     { href: '#machine', label: 'Our Machines' },
-    { href: '#products', label: 'Products' },
-    { href: '#about', label: 'Why Healthy Vending' },
+    { href: '#about', label: 'About Us' },
     { href: '#faq', label: 'FAQs' },
     { href: '#contact', label: 'Contact Us' },
   ];
@@ -41,19 +40,19 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-28 sm:h-32">
+        <div className="flex justify-between items-center h-14 sm:h-16 md:h-20">
           {/* Logo */}
           <Link href="#home" className="flex items-center group">
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              className="relative h-24 w-auto sm:h-28 md:h-32"
+              className="relative h-10 w-auto sm:h-12 md:h-14"
             >
               <Image
-                src="/logo-large.png"
+                src="/logo-dma.png"
                 alt="DMA Healthy Vending Logo"
-                width={400}
-                height={128}
+                width={269}
+                height={99}
                 className="h-full w-auto object-contain"
                 priority
               />

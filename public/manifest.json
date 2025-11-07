@@ -1,7 +1,7 @@
 {
   "name": "DMA Healthy Vending",
   "short_name": "DMA Vending",
-  "description": "Healthy vending solutions for your workplace. No cost or long-term commitment.",
+  "description": "Healthy vending solutions for gyms, schools, and facilities. No cost or long-term commitment.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -21,7 +21,7 @@
       "purpose": "any maskable"
     },
     {
-      "src": "/apple-icon.png",
+      "src": "/apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png"
     }

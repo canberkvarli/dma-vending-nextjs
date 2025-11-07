@@ -111,7 +111,7 @@ export default function Hero() {
               animate={mounted ? "visible" : "hidden"}
               className="text-xl md:text-2xl font-semibold text-primary mb-8"
             >
-              Promote healthy habits — at no cost to your company!
+              Promote healthy habits — at no cost to you!
             </motion.p>
 
             {/* EXACT TEXT FROM DMA WEBSITE */}
@@ -124,8 +124,8 @@ export default function Hero() {
               Are you tired of junk food-only vending machines? 
               Do you want to offer healthy, natural or low-calorie food and beverage options? 
               HealthyChoice helps you provide the healthy options you want while 
-              helping your company promote a healthy lifestyle. <strong>All without any cost or long-term 
-              commitment to your company.</strong>
+              helping you promote a healthy lifestyle for your gym, school, facility, or location. <strong>All without any cost or long-term 
+              commitment to you.</strong>
             </motion.p>
 
             <motion.div
@@ -175,42 +175,6 @@ export default function Hero() {
                   Learn More
                 </Link>
               </motion.div>
-            </motion.div>
-
-            {/* Trust Indicators */}
-            <motion.div
-              variants={itemVariants}
-              className="grid grid-cols-3 gap-8 pt-8 border-t border-white/10"
-            >
-              {[
-                { value: '$0', label: 'Cost to You' },
-                { value: '100%', label: 'Healthy Options' },
-                { value: '0', label: 'Long-term Commitment' },
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                  animate={mounted ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.8 }}
-                  transition={{ 
-                    duration: 0.5, 
-                    delay: 0.8 + index * 0.1,
-                    type: "spring",
-                    stiffness: 100
-                  }}
-                  whileHover={{ scale: 1.06, y: -4 }}
-                  className="text-center bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm shadow-lg"
-                >
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={mounted ? { opacity: 1 } : { opacity: 0 }}
-                    transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
-                    className="text-4xl md:text-5xl font-extrabold text-primary mb-2"
-                  >
-                    {stat.value}
-                  </motion.div>
-                  <div className="text-white/90 text-base md:text-lg font-medium">{stat.label}</div>
-                </motion.div>
-              ))}
             </motion.div>
           </motion.div>
 

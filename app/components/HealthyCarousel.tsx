@@ -8,7 +8,7 @@ const healthyImages = [
   {
     url: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200&h=675&fit=crop&q=80',
     title: 'Fresh & Healthy Options',
-    description: 'Nutritious choices for your workplace',
+    description: 'Nutritious choices for your location',
   },
   {
     url: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1200&h=675&fit=crop&q=80',
@@ -82,7 +82,7 @@ export default function HealthyCarousel() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-text-secondary max-w-2xl mx-auto"
           >
-            Explore our wide selection of nutritious options that your employees will love.
+            Explore our wide selection of nutritious options that your customers, students, and guests will love.
           </motion.p>
         </motion.div>
 

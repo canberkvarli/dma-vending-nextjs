@@ -19,11 +19,11 @@ const hand = Caveat({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://dmahealthyvending.com'),
   title: {
-    default: "DMA Healthy Vending | Workplace Wellness Solutions",
+    default: "DMA Healthy Vending | Healthy Vending Solutions",
     template: "%s | DMA Healthy Vending",
   },
-  description: "Are you tired of junk food-only vending machines? DMA Healthy Vending provides healthy, natural or low-calorie food and beverage options. All without any cost or long-term commitment to your company.",
-  keywords: ["healthy vending", "workplace wellness", "healthy snacks", "vending machines", "California", "Danville", "healthy food vending", "office wellness", "corporate wellness"],
+  description: "Are you tired of junk food-only vending machines? DMA Healthy Vending provides healthy, natural or low-calorie food and beverage options for gyms, schools, and facilities. All without any cost or long-term commitment to you.",
+  keywords: ["healthy vending", "gym vending", "school vending", "healthy snacks", "vending machines", "California", "Danville", "healthy food vending", "wellness", "student vending"],
   authors: [{ name: "DMA Healthy Vending" }],
   creator: "DMA Healthy Vending",
   publisher: "DMA Healthy Vending",
@@ -37,22 +37,22 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     siteName: "DMA Healthy Vending",
-    title: "DMA Healthy Vending | Workplace Wellness Solutions",
-    description: "Healthy vending solutions for your workplace. No cost or long-term commitment. Providing nutritious snacks and beverages throughout California.",
+    title: "DMA Healthy Vending | Healthy Vending Solutions",
+    description: "Healthy vending solutions for gyms, schools, and facilities. No cost or long-term commitment. Providing nutritious snacks and beverages throughout California.",
     images: [
       {
-        url: "/logo-large.png",
+        url: "/logo-dma.png",
         width: 1200,
         height: 630,
-        alt: "DMA Healthy Vending - Workplace Wellness Solutions",
+        alt: "DMA Healthy Vending - Healthy Vending Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DMA Healthy Vending | Workplace Wellness Solutions",
-    description: "Healthy vending solutions for your workplace. No cost or long-term commitment.",
-    images: ["/logo-large.png"],
+    title: "DMA Healthy Vending | Healthy Vending Solutions",
+    description: "Healthy vending solutions for gyms, schools, and facilities. No cost or long-term commitment.",
+    images: ["/logo-dma.png"],
   },
   robots: {
     index: true,
@@ -68,11 +68,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
-      { url: '/icon.png', type: 'image/png', sizes: '32x32' },
-      { url: '/icon.png', type: 'image/png', sizes: '16x16' },
+      { url: '/icon-32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/icon-16.png', type: 'image/png', sizes: '16x16' },
     ],
     apple: [
-      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
   },
   manifest: '/manifest.json',

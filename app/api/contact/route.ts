@@ -19,7 +19,7 @@ export async function POST(request: Request) {
       `Name: ${name}`,
       `Email: ${email}`,
       phone ? `Phone: ${phone}` : undefined,
-      company ? `Company: ${company}` : undefined,
+      company ? `Location / Organization: ${company}` : undefined,
       '',
       'Message:',
       message || '(no message)'
