@@ -4,10 +4,22 @@ import { motion } from 'framer-motion';
 
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-surface">
+    <section className="py-20 bg-surface">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold mb-4"
+          >
+            About Us
+          </motion.div>
+        </div>
+        
         {/* Letter-styled card */}
-        <div className="relative">
+        <div id="about" className="relative scroll-mt-20">
           <div className="absolute -inset-2 bg-primary/10 blur-2xl rounded-3xl" />
           <div
             className="relative rounded-3xl bg-white text-emerald-950 shadow-xl border border-emerald-900/10 overflow-hidden dark:bg-emerald-900/90 dark:text-white dark:border-white/10"
@@ -16,19 +28,10 @@ export default function About() {
             <div className="absolute inset-0 opacity-[0.35] pointer-events-none bg-[linear-gradient(180deg,rgba(169,206,55,0.08)_1px,transparent_1px)] bg-[length:100%_36px] dark:opacity-0" />
 
             <div className="relative p-8 md:p-12">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="text-3xl md:text-4xl font-bold text-emerald-950 dark:text-white mb-8 text-center"
-              >
-                About DMA Healthy Vending
-              </motion.h2>
               <div className="max-w-none text-emerald-950 dark:text-white" style={{ fontFamily: 'var(--font-hand)' }}>
                 <div className="text-[1.35rem] md:text-[1.6rem] leading-8 md:leading-9 space-y-6 font-medium">
                 <p>
-                  Hi, I’m Mary Ann, an owner of DMA Healthy Vending, a family owned
+                  Hi, I'm Mary Ann, an owner of DMA Healthy Vending, a family owned
                   business. My husband, Dennis, and I are lifelong residents of the
                   East Bay and ardent advocates of healthy vending.
                 </p>
