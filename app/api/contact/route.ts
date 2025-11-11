@@ -9,10 +9,12 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Name and email are required.' }, { status: 400 });
     }
 
-    const toEmail = process.env.CONTACT_TO_EMAIL;
-    if (!toEmail) {
-      return NextResponse.json({ error: 'Server not configured: CONTACT_TO_EMAIL missing.' }, { status: 500 });
-    }
+    // Always send to Maryann's email as shown on the contact form
+    const maryannEmail = 'maryann@dmahealthyvending.com';
+    // Optionally CC to another email if configured (for testing/monitoring)
+    const ccEmail = process.env.CONTACT_TO_EMAIL;
+    // Combine recipients: primary to Maryann, CC to configured email if provided
+    const recipients = ccEmail ? `${maryannEmail},${ccEmail}` : maryannEmail;
 
     const subject = `New inquiry from ${name} · DMA Healthy Vending`;
     const text = [
@@ -41,9 +43,8 @@ export async function POST(request: Request) {
       // Subject + single consolidated message to avoid duplicated field sections
       params.set('subject', subject);
       params.set('message', text);
-      // Let Web3Forms send to target recipient via templates/routing if configured,
-      // or include recipient for dashboard routing if needed
-      if (toEmail) params.set('recipients', toEmail);
+      // Send to Maryann's email (and optionally CC to configured email)
+      params.set('recipients', recipients);
 
       const endpoint = process.env.WEB3FORMS_ENDPOINT || 'https://api.web3forms.com/submit';
       const response = await fetch(endpoint, {

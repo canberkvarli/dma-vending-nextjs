@@ -6,11 +6,47 @@ const features = [
   {
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    ),
+    title: 'Increased Energy & Productivity',
+    description: 'A healthy, balanced diet boosts energy levels and work productivity, leading to a more effective workforce.',
+  },
+  {
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    title: 'Fewer Sick Days',
+    description: 'Support employee health and reduce absenteeism with nutritious options that help prevent health conditions.',
+  },
+  {
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+    ),
+    title: 'Your Employees Want This',
+    description: 'In a recent study, nearly all respondents reported trying to improve their eating habits. The "healthfulness" of a product impacts 61% of purchase decisions.',
+  },
+  {
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    title: 'Lower Healthcare Costs',
+    description: 'Corporate Wellness Programs help reduce rising healthcare costs while promoting a healthier workforce.',
+  },
+  {
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
       </svg>
     ),
-    title: 'Healthy Options',
-    description: 'Natural and low-calorie food and beverage options that promote a healthy lifestyle.',
+    title: '1,100+ Product Options',
+    description: 'Choose from organic, low-calorie, low-fat, kosher, gluten-free, low-carb, and all-natural options.',
   },
   {
     icon: (
@@ -19,43 +55,7 @@ const features = [
       </svg>
     ),
     title: 'No Cost to You',
-    description: 'All without any cost or long-term commitment to you. Free installation and service.',
-  },
-  {
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-      </svg>
-    ),
-    title: 'Custom Solutions',
-    description: 'Tailored product selection based on your location needs and customer preferences.',
-  },
-  {
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-      </svg>
-    ),
-    title: 'Modern Technology',
-    description: 'Cashless and contactless payments.',
-  },
-  {
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-      </svg>
-    ),
-    title: 'Eco-Friendly',
-    description: 'Sustainable practices and energy-efficient machines.',
-  },
-  {
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-      </svg>
-    ),
-    title: 'Regular Service',
-    description: 'Consistent restocking to ensure products are always fresh and available.',
+    description: 'All without any cost or long-term commitment. Free installation and service.',
   },
 ];
 
@@ -109,17 +109,25 @@ export default function Features() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-5xl font-bold text-text mb-4"
           >
-            Healthy Options You Want
+            Why Promote Healthy Eating?
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-text-secondary max-w-3xl mx-auto"
+            className="text-lg text-text-secondary max-w-3xl mx-auto mb-6"
           >
-            We provide healthy, natural, and low-calorie food and beverage options without any cost 
-            or long-term commitment to you.
+            People are generally becoming more health conscious, so they are actively looking for healthier snack and drink options in the workplace. HealthyChoice can provide your employees and customers with the healthy and delicious snacks, drinks and meals that they crave.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-base text-text-secondary max-w-3xl mx-auto"
+          >
+            Many companies have implemented Corporate Wellness Programs to help lower rising healthcare costs and promote a healthier, more productive workforce. Eating a healthy, balanced diet has many benefits including increased energy, work productivity, and even fewer sick days.
           </motion.p>
         </motion.div>
 
