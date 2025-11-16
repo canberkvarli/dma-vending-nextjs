@@ -64,6 +64,34 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // Redirects from old WordPress URLs to new Next.js site
+  async redirects() {
+    return [
+      // Redirect WordPress admin and content paths to homepage
+      {
+        source: '/wp-admin/:path*',
+        destination: '/',
+        permanent: true, // 301 redirect for SEO
+      },
+      {
+        source: '/wp-content/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/wp-includes/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      // Add more specific redirects here if you know of important WordPress pages
+      // Example:
+      // {
+      //   source: '/old-page',
+      //   destination: '/new-page',
+      //   permanent: true,
+      // },
+    ];
+  },
 };
 
 export default nextConfig;

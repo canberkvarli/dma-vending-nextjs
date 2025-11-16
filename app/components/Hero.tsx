@@ -92,7 +92,7 @@ export default function Hero() {
                 className="relative w-full h-full"
               >
                 <Image
-                  src="/vending1.png"
+                  src="/vending.png"
                   alt="Modern Healthy Vending Machine with fresh fruit graphics"
                   fill
                   className="object-cover object-center"
