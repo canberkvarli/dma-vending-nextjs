@@ -100,7 +100,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth" data-theme="light">
+    <html lang="en" className="scroll-smooth" data-theme="dark">
       <body className={`${inter.variable} ${hand.variable} font-sans antialiased`}>
         <ThemeProvider>
           {children}
