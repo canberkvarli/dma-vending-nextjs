@@ -2,6 +2,7 @@
 
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import AISmartMachine from './components/AISmartMachine';
 import Stats from './components/Stats';
 import VendingShowcase from './components/VendingShowcase';
 // import HealthyCarousel from './components/HealthyCarousel';
@@ -18,6 +19,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <Hero />
+      <AISmartMachine />
       <FruitGallery />
       <Stats />
       <VendingShowcase />

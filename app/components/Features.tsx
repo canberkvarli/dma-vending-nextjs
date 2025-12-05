@@ -118,7 +118,7 @@ export default function Features() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-text-secondary max-w-3xl mx-auto mb-6"
           >
-            People are generally becoming more health conscious, so they are actively looking for healthier snack and drink options in the workplace. HealthyChoice can provide your employees and customers with the healthy and delicious snacks, drinks and meals that they crave.
+            People are generally becoming more health conscious, so they are actively looking for healthier snack and drink options in the workplace. DMA Healthy Vending can provide your employees and customers with the healthy and delicious snacks, drinks and meals that they crave.
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
