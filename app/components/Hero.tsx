@@ -82,7 +82,7 @@ export default function Hero() {
               type: "spring",
               stiffness: 100
             }}
-            className="relative mb-12 w-full max-w-3xl mx-auto"
+            className="relative mb-12 w-full max-w-xl mx-auto"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -102,7 +102,7 @@ export default function Hero() {
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  className={`relative aspect-[3/4] backdrop-blur-lg rounded-3xl overflow-hidden border shadow-2xl ${
+                  className={`relative aspect-[4/5] backdrop-blur-lg rounded-3xl overflow-hidden border shadow-2xl ${
                     imageLoaded 
                       ? 'bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border-primary/20 ai-machine-container animate-glow' 
                       : 'bg-white/5 border-white/10'
@@ -126,7 +126,7 @@ export default function Hero() {
                       src="/smartmachine.png"
                       alt="AI Smart Machine with SmartVision technology"
                       fill
-                      className="object-contain object-center scale-125"
+                      className="object-contain object-center scale-150"
                       priority
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
                       style={{ objectPosition: 'center' }}
