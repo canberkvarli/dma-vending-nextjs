@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Caveat } from "next/font/google";
+import { Inter, Caveat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./contexts/ThemeContext";
 
@@ -13,6 +13,13 @@ const hand = Caveat({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-hand",
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-playfair",
   display: "swap",
 });
 
@@ -101,7 +108,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth" data-theme="light">
-      <body className={`${inter.variable} ${hand.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${hand.variable} ${playfair.variable} font-sans antialiased`}>
         <ThemeProvider>
           {children}
         </ThemeProvider>
