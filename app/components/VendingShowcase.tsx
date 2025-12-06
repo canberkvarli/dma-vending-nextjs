@@ -86,8 +86,8 @@ export default function VendingShowcase() {
               transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-text-secondary max-w-3xl mx-auto"
           >
-            We offer both traditional healthy vending machines and cutting-edge AI Smart Machines. 
-            Both provide convenience, reliability, and healthy options for your location.
+            Our traditional healthy vending machines are our primary offering, providing proven reliability and convenience. 
+            We also offer AI Smart Machines for locations seeking advanced technology solutions.
           </motion.p>
         </motion.div>
 
@@ -99,8 +99,12 @@ export default function VendingShowcase() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="bg-surface-secondary rounded-2xl p-8 border border-border-muted hover:border-primary/30 transition-all"
+            className="bg-surface-secondary rounded-2xl p-8 border-2 border-primary/30 hover:border-primary/50 transition-all shadow-lg relative"
           >
+            {/* Primary Badge */}
+            <div className="absolute top-4 right-4 px-3 py-1 bg-primary text-white rounded-full text-xs font-bold">
+              PRIMARY
+            </div>
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold text-text mb-2">Healthy Vending Machine</h3>
               <p className="text-text-secondary">Traditional, reliable, proven</p>
@@ -108,13 +112,14 @@ export default function VendingShowcase() {
             <motion.div
               whileHover={{ scale: 1.02, y: -5 }}
               transition={{ type: "spring", stiffness: 200 }}
-              className="relative aspect-[3/4] mb-6 rounded-xl overflow-hidden bg-white/5"
+              className="relative mb-6"
             >
               <Image
                 src="/vending.png"
                 alt="Healthy Vending Machine"
-                fill
-                className="object-cover object-center"
+                width={400}
+                height={600}
+                className="object-contain w-full h-auto"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </motion.div>
@@ -161,16 +166,12 @@ export default function VendingShowcase() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent rounded-2xl p-8 border-2 border-primary/30 hover:border-primary/50 transition-all relative overflow-hidden"
+            className="bg-surface-secondary rounded-2xl p-8 border border-border-muted hover:border-primary/30 transition-all"
           >
-            {/* Badge */}
-            <div className="absolute top-4 right-4 px-3 py-1 bg-primary text-white rounded-full text-xs font-bold">
-              AI POWERED
-            </div>
             
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold text-text mb-2">AI Smart Machine</h3>
-              <p className="text-text-secondary">Next-generation technology</p>
+              <p className="text-text-secondary">Also available - Advanced technology option</p>
             </div>
             <motion.div
               whileHover={{ scale: 1.02, y: -5 }}
@@ -185,27 +186,47 @@ export default function VendingShowcase() {
                 }`}>
                   {/* Glowing effect - only render after image loads */}
                   {aiImageLoaded && (
-                    <div className="absolute inset-0 -z-10 ai-glow-pulse" />
+                    <>
+                      <div className="absolute inset-0 -z-10 ai-glow-pulse" />
+                      <div className="absolute inset-0 -z-10 ai-glow-outer" />
+                    </>
                   )}
                   <Image
                     src="/smartmachine.png"
                     alt="AI Smart Machine"
                     fill
-                    className="object-contain object-center scale-[1.6]"
+                    className="object-contain object-center scale-[1.8]"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     style={{ objectPosition: 'center' }}
                     onLoadingComplete={() => {
                       setTimeout(() => setAiImageLoaded(true), 200);
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none" />
+                  {/* Tech gradient overlay - only show after image loads */}
+                  {aiImageLoaded && (
+                    <>
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-primary/5 pointer-events-none" />
+                      {/* Subtle scan line effect */}
+                      <motion.div
+                        animate={{
+                          y: ['-100%', '200%'],
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
+                        className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/3 to-transparent h-1/3 pointer-events-none"
+                      />
+                    </>
+                  )}
                 </div>
               </div>
             </motion.div>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex-shrink-0 w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center">
+                  <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                   </svg>
                 </div>
@@ -215,8 +236,8 @@ export default function VendingShowcase() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex-shrink-0 w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center">
+                  <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
@@ -226,14 +247,14 @@ export default function VendingShowcase() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                <div className="flex-shrink-0 w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center">
+                  <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-text font-semibold">Scalable Business</p>
-                  <p className="text-text-secondary text-sm">More scalable than traditional vending</p>
+                  <p className="text-text font-semibold">Limited Availability</p>
+                  <p className="text-text-secondary text-sm">Available for select locations</p>
                 </div>
               </div>
             </div>

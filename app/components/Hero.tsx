@@ -69,10 +69,10 @@ export default function Hero() {
             }}
             className="text-xl md:text-2xl font-semibold text-primary mb-12 max-w-4xl"
           >
-            Bringing healthy vending solutions powered by cutting-edge AI technology to your location
+            Bringing healthy vending solutions to your location
           </motion.p>
 
-          {/* AI Smart Machine - Featured */}
+          {/* Healthy Vending Machine - Featured */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={mounted ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
@@ -91,7 +91,6 @@ export default function Hero() {
               whileHover={{ scale: 1.02, y: -10 }}
               className="relative"
             >
-              {/* Glowing effect wrapper */}
               <div className="relative">
                 <motion.div
                   animate={imageLoaded ? {
@@ -102,20 +101,8 @@ export default function Hero() {
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  className={`relative aspect-[4/5] backdrop-blur-lg rounded-3xl overflow-hidden border shadow-2xl ${
-                    imageLoaded 
-                      ? 'bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border-primary/20 ai-machine-container animate-glow' 
-                      : 'bg-white/5 border-white/10'
-                  }`}
+                  className="relative aspect-[4/5] backdrop-blur-lg rounded-3xl overflow-hidden border shadow-2xl bg-white/5 border-white/10"
                 >
-                  {/* Outer glow layers - only render after image loads */}
-                  {imageLoaded && (
-                    <>
-                      <div className="absolute inset-0 -z-10 ai-glow-pulse" />
-                      <div className="absolute inset-0 -z-10 ai-glow-outer" />
-                    </>
-                  )}
-                  
                   <motion.div
                     initial={{ scale: 1.1, opacity: 0 }}
                     animate={mounted ? { scale: 1, opacity: 1 } : { scale: 1.1, opacity: 0 }}
@@ -123,10 +110,10 @@ export default function Hero() {
                     className="relative w-full h-full"
                   >
                     <Image
-                      src="/smartmachine.png"
-                      alt="AI Smart Machine with SmartVision technology"
+                      src="/vending.png"
+                      alt="Healthy Vending Machine"
                       fill
-                      className="object-contain object-center scale-150"
+                      className="object-contain object-center"
                       priority
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
                       style={{ objectPosition: 'center' }}
@@ -134,31 +121,13 @@ export default function Hero() {
                         setTimeout(() => setImageLoaded(true), 200);
                       }}
                     />
-                    {/* Tech gradient overlay - only show after image loads */}
-                    {imageLoaded && (
-                      <>
-                        <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-primary/5 pointer-events-none" />
-                        {/* Subtle scan line effect */}
-                        <motion.div
-                          animate={{
-                            y: ['-100%', '200%'],
-                          }}
-                          transition={{
-                            duration: 3,
-                            repeat: Infinity,
-                            ease: "linear",
-                          }}
-                          className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/3 to-transparent h-1/3 pointer-events-none"
-                        />
-                      </>
-                    )}
                   </motion.div>
                 </motion.div>
               </div>
             </motion.div>
             <div className="mt-4 text-center">
-              <p className="text-text font-semibold text-lg">AI Smart Machine</p>
-              <p className="text-primary text-sm mt-1">Powered by SmartVision Technology</p>
+              <p className="text-text font-semibold text-lg">Healthy Vending Machine</p>
+              <p className="text-primary text-sm mt-1">Reliable, proven, and trusted</p>
             </div>
           </motion.div>
 

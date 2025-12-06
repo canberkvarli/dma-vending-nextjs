@@ -23,8 +23,8 @@ export default function Navbar() {
 
   const navLinks = [
     { href: '#home', label: 'Home' },
-    { href: '#ai-smart-machine', label: 'AI Smart Machine' },
     { href: '#machine', label: 'Our Machines' },
+    { href: '#ai-smart-machine', label: 'AI Option' },
     { href: '#about', label: 'About Us' },
     { href: '#faq', label: 'FAQs' },
     { href: '#contact', label: 'Contact Us' },

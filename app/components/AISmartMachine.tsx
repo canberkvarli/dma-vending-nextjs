@@ -36,36 +36,7 @@ export default function AISmartMachine() {
   ];
 
   return (
-    <section id="ai-smart-machine" className="py-20 bg-gradient-to-b from-bg via-bg-secondary to-surface relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.1, 0.2, 0.1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-primary rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.15, 1],
-            opacity: [0.08, 0.15, 0.08],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-          className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-primary rounded-full blur-3xl"
-        />
-      </div>
-
+    <section id="ai-smart-machine" className="py-12 bg-surface relative overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -73,45 +44,55 @@ export default function AISmartMachine() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold mb-4"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 text-primary rounded-full text-sm font-semibold mb-4"
           >
-            AI Technology
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+            Also Available
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-text mb-6"
+            className="text-3xl md:text-4xl font-bold text-text mb-4 flex items-center justify-center gap-3"
           >
-            AI Smart Machine Technology
+            <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+            AI Smart Machine Option
+            <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-text-secondary max-w-3xl mx-auto"
+            className="text-lg text-text-secondary max-w-3xl mx-auto"
           >
-            We operate AI-powered Smart Machines featuring advanced computer vision technology for seamless, contactless transactions
+            For locations seeking advanced technology, we also offer AI-powered Smart Machines with computer vision technology. 
+            Limited availability.
           </motion.p>
         </motion.div>
 
         {/* Features List */}
-        <div className="max-w-4xl mx-auto mb-16">
+        <div className="max-w-4xl mx-auto mb-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="space-y-8"
+            className="space-y-6"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -119,7 +100,7 @@ export default function AISmartMachine() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h3 className="text-3xl md:text-4xl font-bold text-text mb-6">
+              <h3 className="text-2xl md:text-3xl font-bold text-text mb-4">
                 How It Works
               </h3>
             </motion.div>
@@ -136,15 +117,15 @@ export default function AISmartMachine() {
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  className="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-primary shadow-lg"
+                  className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-primary bg-primary/10"
                 >
                   {feature.icon}
                 </motion.div>
                 <div>
-                  <h4 className="text-xl font-bold text-text mb-2">
+                  <h4 className="text-lg font-bold text-text mb-2">
                     {feature.title}
                   </h4>
-                  <p className="text-text-secondary leading-relaxed">{feature.description}</p>
+                  <p className="text-text-secondary text-sm leading-relaxed">{feature.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -165,9 +146,9 @@ export default function AISmartMachine() {
           >
             <Link
               href="#contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all shadow-lg hover:shadow-xl text-lg"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary border-2 border-primary/30 rounded-lg font-semibold hover:bg-primary/20 transition-all"
             >
-              Get Started Today
+              Inquire About AI Machines
               <motion.svg
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
